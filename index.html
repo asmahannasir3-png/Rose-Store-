@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maison de l'Abaya</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#570013",
+                      "on-error-container": "#93000a",
+                      "background": "#fff8f7",
+                      "surface-variant": "#f5dddd",
+                      "surface-tint": "#af2b3e",
+                      "surface-container-highest": "#f5dddd",
+                      "outline": "#8c7071",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#c6c6c7",
+                      "on-secondary": "#ffffff",
+                      "tertiary": "#002c36",
+                      "outline-variant": "#e0bfbf",
+                      "on-background": "#251819",
+                      "on-secondary-container": "#616363",
+                      "on-tertiary-fixed": "#001f26",
+                      "secondary-fixed": "#e2e2e2",
+                      "inverse-on-surface": "#ffedec",
+                      "primary-container": "#800020",
+                      "inverse-surface": "#3b2d2d",
+                      "on-primary-fixed": "#40000b",
+                      "on-error": "#ffffff",
+                      "on-tertiary-container": "#7cb0c0",
+                      "on-primary-container": "#ff828a",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "surface-container-high": "#fbe2e2",
+                      "on-tertiary-fixed-variant": "#114d5b",
+                      "on-primary-fixed-variant": "#8e0f28",
+                      "surface-container": "#ffe9e8",
+                      "primary-fixed-dim": "#ffb3b5",
+                      "on-surface-variant": "#584141",
+                      "secondary-container": "#dfe0e0",
+                      "surface-container-low": "#fff0f0",
+                      "secondary": "#5d5f5f",
+                      "surface-dim": "#edd4d4",
+                      "surface": "#fff8f7",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface": "#251819",
+                      "tertiary-fixed-dim": "#9acfde",
+                      "primary-fixed": "#ffdada",
+                      "inverse-primary": "#ffb3b5",
+                      "tertiary-container": "#004451",
+                      "on-secondary-fixed-variant": "#454747",
+                      "surface-bright": "#fff8f7",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#b6ebfb",
+                      "muted-gold": "#C5A059",
+                      "deep-burgundy": "#570013"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "80px",
+                      "unit": "8px",
+                      "gutter": "24px",
+                      "margin-mobile": "24px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "label-caps": [
+                              "Manrope"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Manrope"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "Manrope"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ]
+              },
+              "fontSize": {
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.15em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.7",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "42px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.7",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F5F5DC;
+            color: #251819;
+            overflow-x: hidden;
+        }
+        
+        .oval-frame {
+            aspect-ratio: 1 / 1.5;
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+        
+        .font-headline-md, .font-display-lg, .font-display-lg-mobile {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .font-label-caps, .font-body-lg, .font-body-md {
+            font-family: 'Manrope', sans-serif;
+        }
+        
+        /* Cart Drawer Transition */
+        #cart-drawer {
+            transition: transform 0.3s ease-in-out;
+        }
+        #cart-drawer.open {
+            transform: translateX(0);
+        }
+        #cart-overlay {
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+        }
+        #cart-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        /* Toast Animation */
+        @keyframes slideDown {
+            from { transform: translate(-50%, -100%); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
+        }
+        .toast-animate {
+            animation: slideDown 0.3s forwards;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="antialiased">
+<!-- Toast Notification -->
+<div class="fixed top-24 left-1/2 transform -translate-x-1/2 bg-surface text-on-surface border border-outline px-6 py-3 rounded shadow-lg z-[60] hidden opacity-0 transition-opacity duration-300 flex items-center gap-3" id="toast">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-body-md" id="toast-msg"></span>
+</div>
+<!-- Cart Drawer Overlay -->
+<div class="fixed inset-0 bg-black/50 z-[90] opacity-0" id="cart-overlay"></div>
+<!-- Cart Drawer -->
+<div class="fixed top-0 left-0 w-full max-w-sm h-full bg-surface shadow-2xl z-[100] transform -translate-x-full flex flex-col" id="cart-drawer">
+<div class="flex justify-between items-center p-6 border-b border-outline-variant">
+<h2 class="text-headline-md font-headline-md text-primary text-2xl">حقيبة التسوق</h2>
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95" id="close-cart">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-6" id="cart-items">
+<!-- Cart items injected here via JS -->
+</div>
+<div class="p-6 border-t border-outline-variant bg-surface-container-lowest">
+<div class="flex justify-between items-center mb-6">
+<span class="text-body-lg font-body-lg text-on-surface-variant">المجموع</span>
+<span class="text-headline-md font-headline-md text-primary text-xl" id="cart-total">٠ ريال</span>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 mb-3 text-label-caps font-label-caps uppercase tracking-widest hover:bg-deep-burgundy transition-colors active:scale-[0.98] rounded-none">
+            إتمام الطلب
+        </button>
+<button class="w-full bg-primary text-on-primary py-4 text-label-caps font-label-caps uppercase tracking-widest hover:opacity-90 transition-colors active:scale-[0.98]" id="checkout-whatsapp">
+            إتمام الطلب عبر واتساب
+        </button>
+</div>
+</div>
+<!-- TopAppBar -->
+<header class="bg-background/80 backdrop-blur-sm fixed top-0 w-full z-50 bg-transparent flat no shadows flex justify-between items-center px-margin-desktop py-6 w-full max-w-container-max mx-auto hidden md:flex">
+<div class="cursor-pointer active:opacity-70">
+<span class="material-symbols-outlined text-primary dark:text-primary">menu</span>
+</div>
+<nav class="flex gap-8">
+<a class="text-primary border-b border-muted-gold pb-1 text-label-caps font-label-caps cursor-pointer active:opacity-70 hover:text-primary transition-colors duration-300" href="#" onclick="event.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});">الرئيسية</a>
+<a class="text-on-surface-variant text-label-caps font-label-caps cursor-pointer active:opacity-70 hover:text-primary transition-colors duration-300" href="#" onclick="event.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});">الأقسام</a>
+<a class="text-on-surface-variant text-label-caps font-label-caps cursor-pointer active:opacity-70 hover:text-primary transition-colors duration-300" href="#latest-releases" onclick="event.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});">أحدث إطلالة</a>
+<a class="text-on-surface-variant text-label-caps font-label-caps cursor-pointer active:opacity-70 hover:text-primary transition-colors duration-300" href="#footer" onclick="event.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});">تواصل معنا</a>
+</nav>
+<h1 class="text-headline-md font-headline-md tracking-widest text-primary dark:text-primary absolute left-1/2 transform -translate-x-1/2 cursor-pointer" onclick="window.scrollTo(0,0)">Rose Store</h1>
+<div class="cursor-pointer active:opacity-70 relative cart-toggle">
+<span class="material-symbols-outlined text-primary dark:text-primary">shopping_bag</span>
+<span class="cart-count-badge absolute -top-2 -right-2 bg-primary text-on-primary text-[10px] w-5 h-5 flex items-center justify-center rounded-full hidden transition-all">0</span>
+</div>
+</header>
+<!-- Mobile Header -->
+<header class="bg-background/80 backdrop-blur-sm fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile py-4 md:hidden">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<h1 class="text-headline-md font-headline-md tracking-widest text-primary text-center flex-1 cursor-pointer" onclick="window.scrollTo(0,0)">Rose Store</h1>
+<div class="cursor-pointer active:opacity-70 relative cart-toggle">
+<span class="material-symbols-outlined text-primary">shopping_bag</span>
+<span class="cart-count-badge absolute -top-2 -right-2 bg-primary text-on-primary text-[10px] w-5 h-5 flex items-center justify-center rounded-full hidden transition-all">0</span>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-32 md:pt-48 pb-24">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-40">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+<!-- Text Content -->
+<div class="md:col-span-5 md:col-start-8 text-right order-2 md:order-1 flex flex-col items-start md:items-end mt-12 md:mt-0">
+<h2 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-6 leading-tight">
+                        أناقة محتشمة,<br/>فخامة خالدة
+                    </h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-10 max-w-md text-right">
+                        اكتشفي مجموعتنا الحصرية من العباءات المصممة بعناية فائقة لتعكس ذوقك الرفيع. تفاصيل دقيقة وأقمشة فاخرة لإطلالة لا تُنسى.
+                    </p>
+<button class="bg-primary text-on-primary text-label-caps font-label-caps py-4 px-12 uppercase tracking-widest hover:bg-deep-burgundy transition-colors duration-300 active:scale-95" onclick="document.getElementById('latest-releases').scrollIntoView({behavior: 'smooth'})">
+                        تسوق الآن
+                    </button>
+</div>
+<!-- Hero Image -->
+<div class="md:col-span-6 md:col-start-1 order-1 md:order-2 flex justify-center relative">
+<div class="oval-frame w-full max-w-[400px] relative z-10 shadow-2xl shadow-primary/10">
+<img class="w-full h-full object-cover" data-alt="A high-fashion editorial portrait of a woman wearing a luxurious, flowing bordeaux abaya." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwLKmHxwQFkTu9Mx5wY-RzzOZSZ892AXtyShdHl_mBVmXNJUKMSIGpEbd5egGp0p6kXhCjfsoF1lGS4qwaMHenVQ4-xmH60FoMQGY5K0BwMKRZvtD-5FRVQkuTkpUzvwkGIRfFnuWEabVhI1Uoe8j_Dsjg7m0Hb1Du3jNbym2YjsT2HrUvLHfOeMgbCQI9jGouX8iJJid75CvU5Tj9LUsXrXmztxxte0tvKWHsAw9L7t1kZjKrxTn2"/>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -z-10 top-20 right-10 w-64 h-64 border border-muted-gold/30 rounded-full"></div>
+</div>
+</div>
+</section>
+<!-- Featured Collection -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-40 pt-10" id="latest-releases">
+<div class="text-center mb-16">
+<h3 class="text-headline-md font-headline-md text-primary mb-4">أحدث الإصدارات</h3>
+<div class="w-12 h-px bg-muted-gold mx-auto"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-gutter">
+<!-- Product 1 -->
+<div class="flex flex-col items-center group cursor-pointer product-card" data-id="1" data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuBjSuc1oalvpwTjrsWvf8jpgMWfG3A64OwYohSgDRgJpSHsdUUPhEYsygoZ997dQvstt_tCbSJKGaqZKBwcdpkXMWMpjq9uIaPybzdTro5YrJD1JApZJ103lrj1BCxlpRnX7jozBG1Ax9NEPOwxVXHkT88MatlHeq-1Mjb8tkFUwDlHuBWXX2rvM_hggVq8jTnqrHFLzZ8VGYG7Uva5jKbFz1aieHATf4BSKALLpCz4zroo3HEr_jw9" data-name="عباءة الحرير الأسود" data-price="1250">
+<div class="oval-frame w-full max-w-[300px] mb-6 transition-transform duration-700 group-hover:scale-105">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjSuc1oalvpwTjrsWvf8jpgMWfG3A64OwYohSgDRgJpSHsdUUPhEYsygoZ997dQvstt_tCbSJKGaqZKBwcdpkXMWMpjq9uIaPybzdTro5YrJD1JApZJ103lrj1BCxlpRnX7jozBG1Ax9NEPOwxVXHkT88MatlHeq-1Mjb8tkFUwDlHuBWXX2rvM_hggVq8jTnqrHFLzZ8VGYG7Uva5jKbFz1aieHATf4BSKALLpCz4zroo3HEr_jw9"/>
+</div>
+<h4 class="text-headline-md font-headline-md text-primary mb-2 text-center text-[24px]">عباءة الحرير الأسود</h4>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4">١,٢٥٠ ريال</p>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-primary text-primary px-6 py-2 rounded-full font-body-md text-sm hover:bg-primary hover:text-on-primary">أضف للسلة</button>
+</div>
+<!-- Product 2 -->
+<div class="flex flex-col items-center group cursor-pointer mt-0 md:mt-16 product-card" data-id="2" data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuB7Qivh3Ay2boQ8h-MeqDvtxoi106lyIz_HwK-SrBTFhHBAf4jE472yaLz5Mr-d6LK0xeiQmd-kzSsIF1Yrtc5-f1kgpLo4lHy8cOOiYPNZu3hv0VGfaUHNQ2zIO-UNDGAykav99DJWmjPqvGmai_huw51iM7RIHxA7IKvungvkSbicuK5PZJGwYCIB98pIrsvtCSzE1BOsIt7QuUGgxHH7XzCGUsTqgyg_gecyhrMeE3092d978qeE" data-name="عباءة الكتان البيج" data-price="980">
+<div class="oval-frame w-full max-w-[300px] mb-6 transition-transform duration-700 group-hover:scale-105">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7Qivh3Ay2boQ8h-MeqDvtxoi106lyIz_HwK-SrBTFhHBAf4jE472yaLz5Mr-d6LK0xeiQmd-kzSsIF1Yrtc5-f1kgpLo4lHy8cOOiYPNZu3hv0VGfaUHNQ2zIO-UNDGAykav99DJWmjPqvGmai_huw51iM7RIHxA7IKvungvkSbicuK5PZJGwYCIB98pIrsvtCSzE1BOsIt7QuUGgxHH7XzCGUsTqgyg_gecyhrMeE3092d978qeE"/>
+</div>
+<h4 class="text-headline-md font-headline-md text-primary mb-2 text-center text-[24px]">عباءة الكتان البيج</h4>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4">٩٨٠ ريال</p>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-primary text-primary px-6 py-2 rounded-full font-body-md text-sm hover:bg-primary hover:text-on-primary">أضف للسلة</button>
+</div>
+<!-- Product 3 -->
+<div class="flex flex-col items-center group cursor-pointer product-card" data-id="3" data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuCt8FOStesTPK6cuSFBJ8sy-rt2sQdlUpIbl-dkkCi3iJCJFEscQQh68ijg4p3igSfxHh9AYNBYl-Ab30HbMtQ9V2egulZOzLAsGWaYOp_s2tpoRuDWZWIaP6Pm1lgR6I1UG3mfKHfOgQ6DdfiicqQINDZeZEc457roEBcCi6cqCYixTDn5Gd7yJ0X9JDcRNH6dc3hkzvPs8tsK8Op91NIgBTpKDxCo_nLye7rJTDG0a7lPzCkZfHCS" data-name="عباءة مخمل بورغندي" data-price="1400">
+<div class="oval-frame w-full max-w-[300px] mb-6 transition-transform duration-700 group-hover:scale-105">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt8FOStesTPK6cuSFBJ8sy-rt2sQdlUpIbl-dkkCi3iJCJFEscQQh68ijg4p3igSfxHh9AYNBYl-Ab30HbMtQ9V2egulZOzLAsGWaYOp_s2tpoRuDWZWIaP6Pm1lgR6I1UG3mfKHfOgQ6DdfiicqQINDZeZEc457roEBcCi6cqCYixTDn5Gd7yJ0X9JDcRNH6dc3hkzvPs8tsK8Op91NIgBTpKDxCo_nLye7rJTDG0a7lPzCkZfHCS"/>
+</div>
+<h4 class="text-headline-md font-headline-md text-primary mb-2 text-center text-[24px]">عباءة مخمل بورغندي</h4>
+<p class="text-body-md font-body-md text-on-surface-variant mb-4">١,٤٠٠ ريال</p>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-primary text-primary px-6 py-2 rounded-full font-body-md text-sm hover:bg-primary hover:text-on-primary">أضف للسلة</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-dim dark:bg-inverse-surface border-t border-outline-variant/30 flat no shadows flex flex-col items-center gap-8 py-16 px-margin-desktop w-full" id="footer">
+<h2 class="text-headline-md font-headline-md text-primary">Rose Store</h2>
+<nav class="flex flex-wrap justify-center gap-6 md:gap-12 text-label-caps font-label-caps text-on-surface-variant">
+<a class="hover:text-primary underline-offset-4 hover:underline transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="hover:text-primary underline-offset-4 hover:underline transition-opacity duration-200" href="#">Shipping &amp; Returns</a>
+<a class="hover:text-primary underline-offset-4 hover:underline transition-opacity duration-200" href="#">Sustainability</a>
+</nav>
+<p class="text-body-md font-body-md text-on-surface-variant mt-4 text-center">© 2024 Rose Store. ALL RIGHTS RESERVED.</p>
+</footer>
+<script>
+    // Cart State
+    let cart = JSON.parse(localStorage.getItem('rose_store_cart')) || [];
+
+    // DOM Elements
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartOverlay = document.getElementById('cart-overlay');
+    const closeCartBtn = document.getElementById('close-cart');
+    const cartToggles = document.querySelectorAll('.cart-toggle');
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartTotalEl = document.getElementById('cart-total');
+    const cartBadges = document.querySelectorAll('.cart-count-badge');
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-msg');
+    const checkoutWhatsappBtn = document.getElementById('checkout-whatsapp');
+    let toastTimeout;
+
+    // Functions
+    function saveCart() {
+        localStorage.setItem('rose_store_cart', JSON.stringify(cart));
+        updateCartUI();
+    }
+
+    function formatNumber(num) {
+        return num.toLocaleString('ar-SA');
+    }
+
+    function updateCartUI() {
+        // Update badges
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartBadges.forEach(badge => {
+            badge.textContent = totalItems;
+            if (totalItems > 0) {
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        });
+
+        // Update Drawer Items
+        cartItemsContainer.innerHTML = '';
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p class="text-center text-on-surface-variant font-body-md mt-10">السلة فارغة</p>';
+            cartTotalEl.textContent = '٠ ريال';
+            return;
+        }
+
+        let total = 0;
+        cart.forEach((item, index) => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            
+            const itemEl = document.createElement('div');
+            itemEl.className = 'flex gap-4 border-b border-outline-variant/30 pb-4';
+            itemEl.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" class="w-20 h-24 object-cover rounded">
+                <div class="flex-1 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-headline-md text-primary">${item.name}</h4>
+                        <p class="text-body-md text-on-surface-variant text-sm">${formatNumber(item.price)} ريال</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <div class="flex items-center gap-3 border border-outline-variant rounded px-2 py-1">
+                            <button class="text-primary hover:text-on-surface-variant transition-colors" onclick="updateQty(${index}, -1)">
+                                <span class="material-symbols-outlined text-sm">remove</span>
+                            </button>
+                            <span class="font-body-md text-sm w-4 text-center">${item.quantity}</span>
+                            <button class="text-primary hover:text-on-surface-variant transition-colors" onclick="updateQty(${index}, 1)">
+                                <span class="material-symbols-outlined text-sm">add</span>
+                            </button>
+                        </div>
+                        <button class="text-error hover:opacity-70 transition-opacity text-sm font-body-md" onclick="removeItem(${index})">حذف</button>
+                    </div>
+                </div>
+            `;
+            cartItemsContainer.appendChild(itemEl);
+        });
+
+        cartTotalEl.textContent = `${formatNumber(total)} ريال`;
+    }
+
+    window.updateQty = (index, delta) => {
+        if (cart[index].quantity + delta > 0) {
+            cart[index].quantity += delta;
+        } else {
+            cart.splice(index, 1);
+        }
+        saveCart();
+    };
+
+    window.removeItem = (index) => {
+        cart.splice(index, 1);
+        saveCart();
+    };
+
+    function showToast(message) {
+        toastMsg.textContent = message;
+        toast.classList.remove('hidden', 'opacity-0');
+        toast.classList.add('toast-animate');
+        
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+            toast.classList.add('opacity-0');
+            setTimeout(() => {
+                toast.classList.remove('toast-animate');
+                toast.classList.add('hidden');
+            }, 300);
+        }, 3000);
+    }
+
+    function toggleCart() {
+        cartDrawer.classList.toggle('open');
+        cartOverlay.classList.toggle('open');
+    }
+
+    // Event Listeners
+    cartToggles.forEach(btn => btn.addEventListener('click', toggleCart));
+    closeCartBtn.addEventListener('click', toggleCart);
+    cartOverlay.addEventListener('click', toggleCart);
+
+    if (checkoutWhatsappBtn) {
+        checkoutWhatsappBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                showToast('السلة فارغة');
+                return;
+            }
+            
+            let message = "مرحبًا، أريد إتمام هذا الطلب:\nالمنتجات:\n";
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                message += `- ${item.name} × ${item.quantity} — ${itemTotal}\n`;
+            });
+            
+            message += `الإجمالي: ${total}\nأرغب في إتمام الطلب.`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/966576396922?text=${encodedMessage}`, '_blank');
+        });
+    }
+
+    document.querySelectorAll('.product-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+            // Add pulse effect to simulate button press
+            card.style.transform = 'scale(0.98)';
+            setTimeout(() => card.style.transform = '', 150);
+
+            const product = {
+                id: card.dataset.id,
+                name: card.dataset.name,
+                price: parseInt(card.dataset.price),
+                image: card.dataset.image
+            };
+            
+            const existing = cart.find(item => item.id === product.id);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            saveCart();
+            showToast(`تم إضافة ${product.name} للسلة`);
+        });
+    });
+
+    // Initial render
+    updateCartUI();
+</script>
+</body></html>
