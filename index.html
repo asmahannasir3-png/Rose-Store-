@@ -1,3 +1,464 @@
+<!-- Rose Store Customer Appraisals -->
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>آراء العملاء | MAISON DE L'ABAYA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#e0bfbf",
+                        "on-background": "#251819",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#ffdada",
+                        "secondary-fixed": "#e4e4cc",
+                        "on-secondary-fixed-variant": "#474836",
+                        "secondary-container": "#e1e1c9",
+                        "tertiary": "#002c36",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#800020",
+                        "secondary": "#5e604d",
+                        "background": "#fff8f7",
+                        "on-primary-fixed-variant": "#8e0f28",
+                        "on-surface-variant": "#584141",
+                        "inverse-surface": "#3b2d2d",
+                        "surface-bright": "#fff8f7",
+                        "tertiary-container": "#004451",
+                        "on-tertiary-fixed-variant": "#114d5b",
+                        "primary-fixed-dim": "#ffb3b5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#ff828a",
+                        "surface-tint": "#af2b3e",
+                        "on-tertiary-container": "#7cb0c0",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1b1d0e",
+                        "on-primary-fixed": "#40000b",
+                        "on-surface": "#251819",
+                        "surface-variant": "#f5dddd",
+                        "surface-dim": "#edd4d4",
+                        "secondary-fixed-dim": "#c8c8b0",
+                        "surface": "#fff8f7",
+                        "tertiary-fixed-dim": "#9acfde",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#fbe2e2",
+                        "soft-charcoal": "#2D2926",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#ffedec",
+                        "tertiary-fixed": "#b6ebfb",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#001f26",
+                        "surface-container-low": "#fff0f0",
+                        "inverse-primary": "#ffb3b5",
+                        "warm-ivory": "#FAF9F6",
+                        "outline": "#8c7071",
+                        "surface-container-highest": "#f5dddd",
+                        "muted-gold": "#C5A059",
+                        "surface-container": "#ffe9e8",
+                        "deep-burgundy": "#570013",
+                        "on-secondary-container": "#636451",
+                        "primary": "#570013"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "80px",
+                        "margin-mobile": "24px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Manrope", "sans-serif"],
+                        "display-lg-mobile": ["Playfair Display", "serif"],
+                        "headline-md": ["Playfair Display", "serif"],
+                        "display-lg": ["Playfair Display", "serif"],
+                        "body-lg": ["Manrope", "sans-serif"],
+                        "body-md": ["Manrope", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["42px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.7", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.7", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined[data-weight="fill"] { font-variation-settings: 'FILL' 1; }
+        
+        /* Custom scrollbar for horizontal scrolling reviews */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .oval-image { border-radius: 50% / 30%; } /* Approximation of 1:1.5 oval */
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-md antialiased min-h-screen flex flex-col">
+<!-- TopAppBar from JSON -->
+<header class="bg-background/80 dark:bg-background/80 backdrop-blur-sm fixed top-0 w-full z-50 bg-transparent flex justify-between items-center px-margin-desktop py-6 w-full max-w-container-max mx-auto flat no shadows">
+<button aria-label="Menu" class="text-primary dark:text-primary cursor-pointer active:opacity-70 hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-headline-md font-headline-md">menu</span>
+</button><h1 class="text-headline-md font-headline-md tracking-widest text-primary text-center flex-1">Rose Store</h1>
+<button aria-label="Shopping Bag" class="text-primary dark:text-primary cursor-pointer active:opacity-70 hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-headline-md font-headline-md">shopping_bag</span>
+</button>
+</header>
+<main class="flex-grow pt-[120px] pb-32">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-desktop mb-[120px] text-center">
+<h2 class="text-display-lg font-display-lg text-primary mb-6">اراء اراءالعملاء</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                نعتز بشهادات عملائنا التي تعكس التزامنا بتقديم أعلى مستويات الجودة والحرفية في كل قطعة. اكتشفي تجاربهم مع تصاميمنا.
+            </p>
+</section>
+<!-- Bento Grid Reviews -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter mb-[160px]">
+<!-- Large Review Card (Takes 8 columns) -->
+<div class="col-span-1 md:col-span-8 bg-warm-ivory rounded-xl p-8 md:p-12 relative overflow-hidden group">
+<div class="absolute -right-12 -top-12 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-weight="fill">format_quote</span>
+</div>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+</div>
+<p class="text-headline-md font-headline-md text-primary mb-8 leading-relaxed">
+                    "الجودة تفوق الوصف. القماش ينساب بنعومة استثنائية، والتفاصيل الدقيقة تبرز حرفية عالية لا مثيل لها. هذه العباءة ليست مجرد لباس، بل هي تحفة فنية تضفي لمسة من الفخامة الهادئة."
+                </p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-primary font-bold">ن.ا</div>
+<div>
+<p class="text-label-caps font-label-caps text-on-surface">نورة العبدالله</p>
+<p class="text-body-md font-body-md text-on-surface-variant text-sm">اشترت عباءة الحرير المخملي</p>
+</div>
+</div>
+</div>
+<!-- Tall Image Focus (Takes 4 columns) -->
+<div class="col-span-1 md:col-span-4 flex flex-col justify-center items-center h-full">
+<div class="relative w-full aspect-[1/1.5] oval-image overflow-hidden shadow-[0_20px_40px_rgba(87,0,19,0.08)]">
+<img class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" data-alt="A high-fashion editorial shot of a luxurious bordeaux abaya draped elegantly on a mannequin in a minimalist, sunlit studio with beige walls. The lighting highlights the premium texture and flow of the fabric." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYTPppshieAH90gwNkfmaroZo1pqUzmUjZJBAcE1NsnILjYFeJ6gq2qqg7iJGJ30b9I4I_9f9f4UoRZq9_8CAYbAcEovwdoUK_mez-f86nnRVsUa-Facn2vb3XPS5e9BJHvITBEFlhZDNxyYzp85j2Fkd5yN0CrjQtNmCUhfbjZc2UaHEkGu2IhOaOBOKSOrkWVhyOslm1JFYOxaRiWaVO-E03ZNVhWSYdJ9dMUgoHQmd-2JrEpkcg"/>
+</div>
+</div>
+<!-- Medium Review Card -->
+<div class="col-span-1 md:col-span-4 bg-warm-ivory rounded-xl p-8 relative">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+</div>
+<p class="text-body-lg font-body-lg text-on-surface mb-6">
+                    "تصميم راقٍ ومحتشم. اللون العنابي (بوردو) غني جداً وثابت. الخياطة نظيفة من الداخل والخارج، مما يدل على اهتمام كبير بالتفاصيل."
+                </p>
+<p class="text-label-caps font-label-caps text-primary">سارة .م</p>
+</div>
+<!-- Medium Review Card -->
+<div class="col-span-1 md:col-span-4 bg-warm-ivory rounded-xl p-8 relative">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-outline-variant" data-weight="fill">star</span>
+</div>
+<p class="text-body-lg font-body-lg text-on-surface mb-6">
+                   "التغليف بحد ذاته تجربة فاخرة. العباءة وصلتني مكوية وجاهزة للارتداء ورائحتها زكية. القماش بارد ومناسب للصيف."
+               </p>
+<p class="text-label-caps font-label-caps text-primary">أمل .ع</p>
+</div>
+<!-- Medium Review Card with overlapping element -->
+<div class="col-span-1 md:col-span-4 bg-surface-variant rounded-xl p-8 relative overflow-hidden">
+<div class="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-primary/5 blur-2xl"></div>
+<div class="flex items-center gap-2 mb-4 relative z-10">
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-muted-gold" data-weight="fill">star</span>
+</div>
+<p class="text-body-lg font-body-lg text-primary-container mb-6 relative z-10 italic">
+                   "أصبحت وجهتي الأولى لاختيار العباءات للمناسبات الخاصة. الأناقة والبساطة في تصميم واحد."
+               </p>
+<p class="text-label-caps font-label-caps text-primary relative z-10">ريم .خ</p>
+</div>
+</section>
+<!-- Leave a Review CTA Section -->
+<section class="bg-warm-ivory py-[120px]">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col items-center text-center">
+<h3 class="text-headline-md font-headline-md text-primary mb-4">شاركينا تجربتك</h3>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-lg mb-8">
+                    رأيك يهمنا ويسهم في تطوير إبداعاتنا. يسعدنا أن تشاركينا انطباعك عن تصاميم MAISON DE L'ABAYA.
+                </p>
+<button class="bg-primary text-on-primary text-label-caps font-label-caps uppercase px-12 py-4 tracking-widest hover:bg-deep-burgundy transition-colors duration-300 w-full md:w-auto">
+                    كتابة تقييم
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer from JSON -->
+<footer class="bg-surface-dim dark:bg-inverse-surface w-full border-t border-outline-variant/30 flat no shadows flex flex-col items-center gap-8 py-16 px-margin-desktop w-full">
+<h2 class="text-headline-md font-headline-md text-primary dark:text-primary-fixed-dim">Rose Store</h2>
+<nav class="flex flex-wrap justify-center gap-8">
+<a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary underline-offset-4 hover:underline transition-opacity duration-200 uppercase" href="#">Privacy Policy</a>
+<a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary underline-offset-4 hover:underline transition-opacity duration-200 uppercase" href="#">Shipping &amp; Returns</a>
+<a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary underline-offset-4 hover:underline transition-opacity duration-200 uppercase" href="#">Sustainability</a>
+</nav>
+<p class="text-body-md font-body-md text-on-surface-variant text-center">© 2024 Rose Store. ALL RIGHTS RESERVED.</p>
+</footer>
+</body></html>
+
+<!-- Rose Store Collection 1 -->
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>مجموعة العبايات - MAISON DE L'ABAYA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#e0bfbf",
+                        "on-background": "#251819",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#ffdada",
+                        "secondary-fixed": "#e4e4cc",
+                        "on-secondary-fixed-variant": "#474836",
+                        "secondary-container": "#e1e1c9",
+                        "tertiary": "#002c36",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#800020",
+                        "secondary": "#5e604d",
+                        "background": "#fff8f7",
+                        "on-primary-fixed-variant": "#8e0f28",
+                        "on-surface-variant": "#584141",
+                        "inverse-surface": "#3b2d2d",
+                        "surface-bright": "#fff8f7",
+                        "tertiary-container": "#004451",
+                        "on-tertiary-fixed-variant": "#114d5b",
+                        "primary-fixed-dim": "#ffb3b5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#ff828a",
+                        "surface-tint": "#af2b3e",
+                        "on-tertiary-container": "#7cb0c0",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1b1d0e",
+                        "on-primary-fixed": "#40000b",
+                        "on-surface": "#251819",
+                        "surface-variant": "#f5dddd",
+                        "surface-dim": "#edd4d4",
+                        "secondary-fixed-dim": "#c8c8b0",
+                        "surface": "#fff8f7",
+                        "tertiary-fixed-dim": "#9acfde",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#fbe2e2",
+                        "soft-charcoal": "#2D2926",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#ffedec",
+                        "tertiary-fixed": "#b6ebfb",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#001f26",
+                        "surface-container-low": "#fff0f0",
+                        "inverse-primary": "#ffb3b5",
+                        "warm-ivory": "#FAF9F6",
+                        "outline": "#8c7071",
+                        "surface-container-highest": "#f5dddd",
+                        "muted-gold": "#C5A059",
+                        "surface-container": "#ffe9e8",
+                        "deep-burgundy": "#570013",
+                        "on-secondary-container": "#636451",
+                        "primary": "#570013"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "80px",
+                        "margin-mobile": "24px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "body-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["42px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.7", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.7", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .oval-image-container {
+            aspect-ratio: 1 / 1.5;
+            border-radius: 9999px;
+            overflow: hidden;
+            position: relative;
+        }
+        .oval-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .product-card:hover .oval-image-container img {
+            transform: scale(1.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background/80 dark:bg-background/80 backdrop-blur-sm bg-transparent flat no shadows flex flex-col">
+<div class="flex justify-between items-center px-margin-desktop py-6 w-full max-w-container-max mx-auto">
+<button class="text-primary dark:text-primary cursor-pointer active:opacity-70 hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="text-headline-md font-headline-md tracking-widest text-primary dark:text-primary text-center">Rose Store</h1>
+<button class="text-primary dark:text-primary cursor-pointer active:opacity-70 hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</header>
+<!-- Navigation Drawer (Hidden on desktop, shown on mobile logic normally, but we use a fixed drawer for demo or keep it hidden) -->
+<!-- Assuming this is hidden unless interacted with, we'll skip rendering a visible drawer to focus on the grid -->
+<main class="flex-grow pt-32 pb-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<!-- Header / Breadcrumbs -->
+<div class="text-center mb-16">
+<nav class="flex justify-center items-center gap-2 text-label-caps font-label-caps text-soft-charcoal mb-4">
+<a class="hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_6}}">الرئيسية</a>
+<span class="">/</span>
+<span class="text-primary">مجموعة العبايات</span>
+</nav>
+<h2 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-6">المجموعة الجديدة</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                اكتشفي مجموعتنا الحصرية من العبايات الفاخرة، حيث يلتقي التصميم العصري مع الأناقة الكلاسيكية. كل قطعة مصممة بعناية لتعكس جمالك الداخلي.
+            </p>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-gutter gap-y-16">
+<!-- Product 1 -->
+<div class="product-card flex flex-col items-center group cursor-pointer">
+<div class="oval-image-container w-full mb-6 bg-warm-ivory">
+<img alt="عباية بوردو كلاسيكية" class="" data-alt="A luxurious high-end fashion editorial shot of a woman wearing a flowing Bordeaux colored Abaya. The fabric looks expensive and drapes elegantly. The background is a soft, minimalist Beige canvas with subtle lighting. The overall mood is modest luxury, sophisticated and serene, adhering to a refined color palette of deep reds and warm creams." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZfjyeTr8hvrAi5hRjV7gIqG4XoWEuVnz01JRcxYkQOm9HoTozmARVrt2UjXwV7DX-Zdhtf2HxaRssSv9J_eLsfmzcYrTdVVps7pHGV7z1KBbTmXSxo41MV8_bj0tpWNH3k5TohZBeKViNrlo0coTtqodgK16fHKP48f3YiE3d7cCr0pzBots-3x6t6BvCCo5HemumPuKF_JNH-HSbRNrGLAiqd_ILMhCDJZChs1hHGuov9q5f5Zl5"/>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary text-center mb-2">عباية بوردو كلاسيكية</h3>
+<p class="text-body-md font-body-md text-on-surface-variant text-center">500 ريال</p>
+</div>
+<!-- Product 2 -->
+<div class="product-card flex flex-col items-center group cursor-pointer">
+<div class="oval-image-container w-full mb-6 bg-warm-ivory">
+<img alt="عباية بيج مطرزة" class="" data-alt="An elegant fashion photograph showcasing a minimalist beige Abaya with intricate, subtle embroidery. The model stands in a warmly lit, expansive studio space that suggests a high-end lookbook aesthetic. The lighting highlights the tactile luxury of the garment. Modest, graceful, and expansive atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7sktiMi2GGnvKXwRH5ycE-P40QXP0lgmmjSgMQ5yJnADIDJ70yb92yLILtp5oyU7xbVvaiJ7GUSENkcUp2k1M9HZVe0Ntwm-lIaN2YL_zhaZn7LuWOpn-NjksFXgcecmjWuyd_BeVyXGq9CioYrv1wFkLTk1W9yolSCdY8uGDVQzkGXerzadLMHbk94ZZzURzj8iPNIRZcNCBwsboO7RVx4l179BHcUvJTnkmxbK0fU5jtdojOTae"/>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary text-center mb-2">عباية بيج مطرزة</h3>
+<p class="text-body-md font-body-md text-on-surface-variant text-center">650 ريال</p>
+</div>
+<!-- Product 3 -->
+<div class="product-card flex flex-col items-center group cursor-pointer">
+<div class="oval-image-container w-full mb-6 bg-warm-ivory">
+<img alt="عباية حرير عنابي" class="" data-alt="A striking editorial image of a luxury Abaya in deep burgundy or Bordeaux silk chiffon. The silhouette is fluid and sweeps elegantly. Set against a clean, warm-ivory background that creates a high-contrast focal point. The aesthetic is tactile luxury and quiet sophistication, perfect for a modest high-fashion brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2dm2qBTzdGPtgzwnXiOc_XdyK_OoeLMmwFtPH5Sx073WmPzHZq4pjkzbOB93du9LjSpnVGsY2BNqgkm8bvmX_4qoJtGj5nIhGJ8IEkDHvYN9WofBqMBsJbjW7inAjkGbC-VGvUfefWufEgRevGM3g5Usq_lfF6I9IbxYdZaA1pTXV2-gbBYFsagrQMiqtgKSPz0edPnK4LwaJhh31WJW-wLZCz58BaG4ZpuK6U_72MZj4cGZSev8m"/>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary text-center mb-2">عباية حرير عنابي</h3>
+<p class="text-body-md font-body-md text-on-surface-variant text-center">800 ريال</p>
+</div>
+<!-- Product 4 -->
+<div class="product-card flex flex-col items-center group cursor-pointer">
+<div class="oval-image-container w-full mb-6 bg-warm-ivory">
+<img alt="عباية بتفاصيل ذهبية" class="" data-alt="A beautiful, detailed shot of a premium Abaya featuring subtle overlapping elliptical motifs in its design. The color palette revolves around warm beiges and muted golds. Shot in a gallery-like setting with soft, high-key lighting that emphasizes the meticulous craftsmanship and timeless elegance of the modest wear." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADlXZLpEPHr2hjomIGgFBQBG4VAW-IuAwCukWK_hTwjtyEr3wcxXJ93QKQmrNftk0dmm-F7MulbN1yrbZPtVG9hwG5dCweSlXO0dRdZ2DfBoJ-GtLWiN4AnO6QSAsxDKq1ssDJb_4E4Wz5Svz1sP4cqjbpWXZWvrGrWs7f25R-YTg1T5ZQJRTAZ84ZBgHdsmKhy7eTk3qbw3fWH7VKEgMU7kdpXvHvmkwa9ctYavtfDmguWk1pSsgk"/>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary text-center mb-2">عباية بتفاصيل ذهبية</h3>
+<p class="text-body-md font-body-md text-on-surface-variant text-center">750 ريال</p>
+</div>
+<!-- Product 5 -->
+<div class="product-card flex flex-col items-center group cursor-pointer">
+<div class="oval-image-container w-full mb-6 bg-warm-ivory">
+<img alt="عباية ليلية فاخرة" class="" data-alt="A sophisticated fashion photography piece displaying a dark, nearly black Abaya with subtle Bordeaux undertones. The fabric drapes heavily, suggesting premium weight and quality. The setting is a minimalist studio with warm ivory tones, reflecting a quiet sophistication and modest luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVwmnW7CwwrHkSXjQxY5mZzR-bjzP9y6hM_kMAMvqP6RI8a2iAQMofcZR0bE5gnwPjNYMPC39wtOxJE47va9Q03vcZmaSnGopFzc1568rA-66jdJpHl9zbHmIrxJt542IgCIefYyX0rX0INPkv6mu5vgPDYmQR1gOnAkaUr4lTojP-xuTFru4yuLmT98qGbW79HFXtHegOnwL0OJh1HJBovsDHkoBAUXnXWqAkJjPd2TMs7gWuTnvf"/>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary text-center mb-2">عباية للمناسبات فاخرة</h3>
+<p class="text-body-md font-body-md text-on-surface-variant text-center">900 ريال</p>
+</div>
+<!-- Product 6 -->
+<div class="product-card flex flex-col items-center group cursor-pointer">
+<div class="oval-image-container w-full mb-6 bg-warm-ivory">
+<img alt="عباية النهار الناعمة" class="" data-alt="A soft, romantic shot of an Abaya in a light beige tone, flowing gracefully. The image uses tonal layering with a warm-ivory background. The mood is serene, emphasizing the sweeping curves of the garment, aligned with a high-end, editorial modest fashion aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeKgT8LTkizdhDM83Be4D7RLAfQBFOjcT-F7VSPDNGY5Eua1k9XndWlds__PVmBXPvTy5ryAX2lQ4IzWhUb7wxrxDCJw4Q42tHBrid5Ahag0VpzkfTvZUoARLyM1f1H7M8UlJJkEAL-rJ6VwsfGogWDsZvaLECsiT31VjriL0bv_4u2fbJTYgMsEFaaofLgnutwnOqgdzY0hulRZ44476GH0si1cZAYaGVeQs9nRyRwuQxS65lUOBo"/>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary text-center mb-2">عباية عمليه ناعمه</h3>
+<p class="text-body-md font-body-md text-on-surface-variant text-center">550 ريال</p>
+</div>
+</div>
+<!-- Load More Button -->
+<div class="mt-24 flex justify-center">
+<button class="bg-primary text-on-primary text-label-caps font-label-caps uppercase px-12 py-4 hover:bg-primary/90 transition-colors duration-300">
+                عرض المزيد
+            </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-dim dark:bg-inverse-surface border-t border-outline-variant/30 flat no shadows flex flex-col items-center gap-8 py-16 px-margin-desktop">
+<h2 class="text-headline-md font-headline-md text-primary">Rose Store</h2>
+<nav class="flex flex-wrap justify-center gap-6">
+<a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary underline-offset-4 hover:underline transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary underline-offset-4 hover:underline transition-opacity duration-200" href="#">Shipping &amp; Returns</a>
+<a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary underline-offset-4 hover:underline transition-opacity duration-200" href="#">Sustainability</a>
+</nav>
+<p class="text-body-md font-body-md text-on-surface-variant mt-4">© 2024 Rose Store. ALL RIGHTS RESERVED.</p>
+</footer>
+</body></html>
+
+<!-- Rose Store Landing Page -->
 <!DOCTYPE html>
 
 <html dir="rtl" lang="ar"><head>
@@ -7,61 +468,64 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
           darkMode: "class",
           theme: {
             extend: {
               "colors": {
-                      "primary": "#570013",
-                      "on-error-container": "#93000a",
-                      "background": "#fff8f7",
-                      "surface-variant": "#f5dddd",
-                      "surface-tint": "#af2b3e",
-                      "surface-container-highest": "#f5dddd",
-                      "outline": "#8c7071",
-                      "error-container": "#ffdad6",
-                      "secondary-fixed-dim": "#c6c6c7",
-                      "on-secondary": "#ffffff",
-                      "tertiary": "#002c36",
+                      "on-primary": "#ffffff",
                       "outline-variant": "#e0bfbf",
                       "on-background": "#251819",
-                      "on-secondary-container": "#616363",
-                      "on-tertiary-fixed": "#001f26",
-                      "secondary-fixed": "#e2e2e2",
-                      "inverse-on-surface": "#ffedec",
-                      "primary-container": "#800020",
-                      "inverse-surface": "#3b2d2d",
-                      "on-primary-fixed": "#40000b",
-                      "on-error": "#ffffff",
-                      "on-tertiary-container": "#7cb0c0",
-                      "on-primary-container": "#ff828a",
-                      "on-secondary-fixed": "#1a1c1c",
-                      "surface-container-high": "#fbe2e2",
-                      "on-tertiary-fixed-variant": "#114d5b",
-                      "on-primary-fixed-variant": "#8e0f28",
-                      "surface-container": "#ffe9e8",
-                      "primary-fixed-dim": "#ffb3b5",
-                      "on-surface-variant": "#584141",
-                      "secondary-container": "#dfe0e0",
-                      "surface-container-low": "#fff0f0",
-                      "secondary": "#5d5f5f",
-                      "surface-dim": "#edd4d4",
-                      "surface": "#fff8f7",
-                      "surface-container-lowest": "#ffffff",
-                      "on-surface": "#251819",
-                      "tertiary-fixed-dim": "#9acfde",
+                      "error-container": "#ffdad6",
                       "primary-fixed": "#ffdada",
-                      "inverse-primary": "#ffb3b5",
-                      "tertiary-container": "#004451",
-                      "on-secondary-fixed-variant": "#454747",
+                      "secondary-fixed": "#e4e4cc",
+                      "on-secondary-fixed-variant": "#474836",
+                      "secondary-container": "#e1e1c9",
+                      "tertiary": "#002c36",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#800020",
+                      "secondary": "#5e604d",
+                      "background": "#fff8f7",
+                      "on-primary-fixed-variant": "#8e0f28",
+                      "on-surface-variant": "#584141",
+                      "inverse-surface": "#3b2d2d",
                       "surface-bright": "#fff8f7",
-                      "error": "#ba1a1a",
-                      "on-primary": "#ffffff",
+                      "tertiary-container": "#004451",
+                      "on-tertiary-fixed-variant": "#114d5b",
+                      "primary-fixed-dim": "#ffb3b5",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#ff828a",
+                      "surface-tint": "#af2b3e",
+                      "on-tertiary-container": "#7cb0c0",
                       "on-tertiary": "#ffffff",
+                      "on-secondary-fixed": "#1b1d0e",
+                      "on-primary-fixed": "#40000b",
+                      "on-surface": "#251819",
+                      "surface-variant": "#f5dddd",
+                      "surface-dim": "#edd4d4",
+                      "secondary-fixed-dim": "#c8c8b0",
+                      "surface": "#fff8f7",
+                      "tertiary-fixed-dim": "#9acfde",
+                      "on-secondary": "#ffffff",
+                      "surface-container-high": "#fbe2e2",
+                      "soft-charcoal": "#2D2926",
+                      "error": "#ba1a1a",
+                      "inverse-on-surface": "#ffedec",
                       "tertiary-fixed": "#b6ebfb",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed": "#001f26",
+                      "surface-container-low": "#fff0f0",
+                      "inverse-primary": "#ffb3b5",
+                      "warm-ivory": "#FAF9F6",
+                      "outline": "#8c7071",
+                      "surface-container-highest": "#f5dddd",
                       "muted-gold": "#C5A059",
-                      "deep-burgundy": "#570013"
+                      "surface-container": "#ffe9e8",
+                      "deep-burgundy": "#570013",
+                      "on-secondary-container": "#636451",
+                      "primary": "#570013"
               },
               "borderRadius": {
                       "DEFAULT": "0.125rem",
@@ -71,29 +535,29 @@
               },
               "spacing": {
                       "margin-desktop": "80px",
-                      "unit": "8px",
-                      "gutter": "24px",
                       "margin-mobile": "24px",
-                      "container-max": "1280px"
+                      "gutter": "24px",
+                      "container-max": "1280px",
+                      "unit": "8px"
               },
               "fontFamily": {
                       "label-caps": [
                               "Manrope"
                       ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
                       "headline-md": [
                               "Playfair Display"
                       ],
-                      "body-md": [
-                              "Manrope"
-                      ],
-                      "display-lg-mobile": [
+                      "display-lg": [
                               "Playfair Display"
                       ],
                       "body-lg": [
                               "Manrope"
                       ],
-                      "display-lg": [
-                              "Playfair Display"
+                      "body-md": [
+                              "Manrope"
                       ]
               },
               "fontSize": {
@@ -105,6 +569,13 @@
                                       "fontWeight": "600"
                               }
                       ],
+                      "display-lg-mobile": [
+                              "42px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
                       "headline-md": [
                               "32px",
                               {
@@ -112,17 +583,11 @@
                                       "fontWeight": "500"
                               }
                       ],
-                      "body-md": [
-                              "16px",
+                      "display-lg": [
+                              "64px",
                               {
-                                      "lineHeight": "1.7",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "display-lg-mobile": [
-                              "42px",
-                              {
-                                      "lineHeight": "1.2",
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.01em",
                                       "fontWeight": "600"
                               }
                       ],
@@ -133,12 +598,11 @@
                                       "fontWeight": "400"
                               }
                       ],
-                      "display-lg": [
-                              "64px",
+                      "body-md": [
+                              "16px",
                               {
-                                      "lineHeight": "1.1",
-                                      "letterSpacing": "-0.01em",
-                                      "fontWeight": "600"
+                                      "lineHeight": "1.7",
+                                      "fontWeight": "400"
                               }
                       ]
               }
@@ -148,7 +612,7 @@
     </script>
 <style>
         body {
-            background-color: #F5F5DC;
+            background-color: #F5F5DC; /* Forced background color as requested */
             color: #251819;
             overflow-x: hidden;
         }
@@ -159,37 +623,13 @@
             overflow: hidden;
         }
         
+        /* Typography overriding classes for Arabic where Playfair might not look optimal, falling back to Manrope which supports Arabic reasonably well, or standard sans if Manrope fails */
         .font-headline-md, .font-display-lg, .font-display-lg-mobile {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', serif; /* Assuming English numbers/some text might exist, but mostly will rely on system fallback for Arabic if Playfair lacks glyphs */
         }
         
         .font-label-caps, .font-body-lg, .font-body-md {
             font-family: 'Manrope', sans-serif;
-        }
-        
-        /* Cart Drawer Transition */
-        #cart-drawer {
-            transition: transform 0.3s ease-in-out;
-        }
-        #cart-drawer.open {
-            transform: translateX(0);
-        }
-        #cart-overlay {
-            transition: opacity 0.3s ease-in-out;
-            pointer-events: none;
-        }
-        #cart-overlay.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        
-        /* Toast Animation */
-        @keyframes slideDown {
-            from { transform: translate(-50%, -100%); opacity: 0; }
-            to { transform: translate(-50%, 0); opacity: 1; }
-        }
-        .toast-animate {
-            animation: slideDown 0.3s forwards;
         }
     </style>
 <style>
@@ -199,62 +639,27 @@
   </style>
 </head>
 <body class="antialiased">
-<!-- Toast Notification -->
-<div class="fixed top-24 left-1/2 transform -translate-x-1/2 bg-surface text-on-surface border border-outline px-6 py-3 rounded shadow-lg z-[60] hidden opacity-0 transition-opacity duration-300 flex items-center gap-3" id="toast">
-<span class="material-symbols-outlined text-primary">check_circle</span>
-<span class="font-body-md" id="toast-msg"></span>
-</div>
-<!-- Cart Drawer Overlay -->
-<div class="fixed inset-0 bg-black/50 z-[90] opacity-0" id="cart-overlay"></div>
-<!-- Cart Drawer -->
-<div class="fixed top-0 left-0 w-full max-w-sm h-full bg-surface shadow-2xl z-[100] transform -translate-x-full flex flex-col" id="cart-drawer">
-<div class="flex justify-between items-center p-6 border-b border-outline-variant">
-<h2 class="text-headline-md font-headline-md text-primary text-2xl">حقيبة التسوق</h2>
-<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95" id="close-cart">
-<span class="material-symbols-outlined">close</span>
-</button>
-</div>
-<div class="flex-1 overflow-y-auto p-6 space-y-6" id="cart-items">
-<!-- Cart items injected here via JS -->
-</div>
-<div class="p-6 border-t border-outline-variant bg-surface-container-lowest">
-<div class="flex justify-between items-center mb-6">
-<span class="text-body-lg font-body-lg text-on-surface-variant">المجموع</span>
-<span class="text-headline-md font-headline-md text-primary text-xl" id="cart-total">٠ ريال</span>
-</div>
-<button class="w-full bg-primary text-on-primary py-4 mb-3 text-label-caps font-label-caps uppercase tracking-widest hover:bg-deep-burgundy transition-colors active:scale-[0.98] rounded-none">
-            إتمام الطلب
-        </button>
-<button class="w-full bg-primary text-on-primary py-4 text-label-caps font-label-caps uppercase tracking-widest hover:opacity-90 transition-colors active:scale-[0.98]" id="checkout-whatsapp">
-            إتمام الطلب عبر واتساب
-        </button>
-</div>
-</div>
 <!-- TopAppBar -->
 <header class="bg-background/80 backdrop-blur-sm fixed top-0 w-full z-50 bg-transparent flat no shadows flex justify-between items-center px-margin-desktop py-6 w-full max-w-container-max mx-auto hidden md:flex">
 <div class="cursor-pointer active:opacity-70">
 <span class="material-symbols-outlined text-primary dark:text-primary">menu</span>
 </div>
 <nav class="flex gap-8">
-<a class="text-primary border-b border-muted-gold pb-1 text-label-caps font-label-caps cursor-pointer active:opacity-70 hover:text-primary transition-colors duration-300" href="#" onclick="event.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});">الرئيسية</a>
-<a class="text-on-surface-variant text-label-caps font-label-caps cursor-pointer active:opacity-70 hover:text-primary transition-colors duration-300" href="#" onclick="event.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});">الأقسام</a>
-<a class="text-on-surface-variant text-label-caps font-label-caps cursor-pointer active:opacity-70 hover:text-primary transition-colors duration-300" href="#latest-releases" onclick="event.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});">أحدث إطلالة</a>
-<a class="text-on-surface-variant text-label-caps font-label-caps cursor-pointer active:opacity-70 hover:text-primary transition-colors duration-300" href="#footer" onclick="event.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});">تواصل معنا</a>
+<a class="text-primary border-b border-muted-gold pb-1 text-label-caps font-label-caps cursor-pointer active:opacity-70 hover:text-primary transition-colors duration-300" href="{{DATA:SCREEN:SCREEN_6}}">الرئيسية</a>
+<a class="text-on-surface-variant text-label-caps font-label-caps cursor-pointer active:opacity-70 hover:text-primary transition-colors duration-300" href="{{DATA:SCREEN:SCREEN_7}}">الأقسام</a>
+<a class="text-on-surface-variant text-label-caps font-label-caps cursor-pointer active:opacity-70 hover:text-primary transition-colors duration-300" href="{{DATA:SCREEN:SCREEN_5}}">أحدث إطلالة</a>
+<a class="text-on-surface-variant text-label-caps font-label-caps cursor-pointer active:opacity-70 hover:text-primary transition-colors duration-300" href="#">تواصل معنا</a>
 </nav>
-<h1 class="text-headline-md font-headline-md tracking-widest text-primary dark:text-primary absolute left-1/2 transform -translate-x-1/2 cursor-pointer" onclick="window.scrollTo(0,0)">Rose Store</h1>
-<div class="cursor-pointer active:opacity-70 relative cart-toggle">
+<h1 class="text-headline-md font-headline-md tracking-widest text-primary dark:text-primary absolute left-1/2 transform -translate-x-1/2">Rose Store</h1>
+<div class="cursor-pointer active:opacity-70">
 <span class="material-symbols-outlined text-primary dark:text-primary">shopping_bag</span>
-<span class="cart-count-badge absolute -top-2 -right-2 bg-primary text-on-primary text-[10px] w-5 h-5 flex items-center justify-center rounded-full hidden transition-all">0</span>
 </div>
 </header>
-<!-- Mobile Header -->
+<!-- Mobile Header (Simplified) -->
 <header class="bg-background/80 backdrop-blur-sm fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile py-4 md:hidden">
-<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
-<h1 class="text-headline-md font-headline-md tracking-widest text-primary text-center flex-1 cursor-pointer" onclick="window.scrollTo(0,0)">Rose Store</h1>
-<div class="cursor-pointer active:opacity-70 relative cart-toggle">
+<span class="material-symbols-outlined text-primary">menu</span>
+<h1 class="text-headline-md font-headline-md tracking-widest text-primary text-center flex-1">Rose Store</h1>
 <span class="material-symbols-outlined text-primary">shopping_bag</span>
-<span class="cart-count-badge absolute -top-2 -right-2 bg-primary text-on-primary text-[10px] w-5 h-5 flex items-center justify-center rounded-full hidden transition-all">0</span>
-</div>
 </header>
 <!-- Main Content -->
 <main class="pt-32 md:pt-48 pb-24">
@@ -269,14 +674,14 @@
 <p class="text-body-lg font-body-lg text-on-surface-variant mb-10 max-w-md text-right">
                         اكتشفي مجموعتنا الحصرية من العباءات المصممة بعناية فائقة لتعكس ذوقك الرفيع. تفاصيل دقيقة وأقمشة فاخرة لإطلالة لا تُنسى.
                     </p>
-<button class="bg-primary text-on-primary text-label-caps font-label-caps py-4 px-12 uppercase tracking-widest hover:bg-deep-burgundy transition-colors duration-300 active:scale-95" onclick="document.getElementById('latest-releases').scrollIntoView({behavior: 'smooth'})">
+<button class="bg-primary text-on-primary text-label-caps font-label-caps py-4 px-12 uppercase tracking-widest hover:bg-deep-burgundy transition-colors duration-300">
                         تسوق الآن
                     </button>
 </div>
 <!-- Hero Image -->
 <div class="md:col-span-6 md:col-start-1 order-1 md:order-2 flex justify-center relative">
 <div class="oval-frame w-full max-w-[400px] relative z-10 shadow-2xl shadow-primary/10">
-<img class="w-full h-full object-cover" data-alt="A high-fashion editorial portrait of a woman wearing a luxurious, flowing bordeaux abaya." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwLKmHxwQFkTu9Mx5wY-RzzOZSZ892AXtyShdHl_mBVmXNJUKMSIGpEbd5egGp0p6kXhCjfsoF1lGS4qwaMHenVQ4-xmH60FoMQGY5K0BwMKRZvtD-5FRVQkuTkpUzvwkGIRfFnuWEabVhI1Uoe8j_Dsjg7m0Hb1Du3jNbym2YjsT2HrUvLHfOeMgbCQI9jGouX8iJJid75CvU5Tj9LUsXrXmztxxte0tvKWHsAw9L7t1kZjKrxTn2"/>
+<img class="w-full h-full object-cover" data-alt="A high-fashion editorial portrait of a woman wearing a luxurious, flowing bordeaux abaya. The setting is a minimalist, warm beige studio with soft, diffused lighting highlighting the rich texture of the fabric. The mood is elegant, modest, and sophisticated, reflecting a high-end luxury brand aesthetic. The color palette revolves around deep burgundy and warm ivory." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwLKmHxwQFkTu9Mx5wY-RzzOZSZ892AXtyShdHl_mBVmXNJUKMSIGpEbd5egGp0p6kXhCjfsoF1lGS4qwaMHenVQ4-xmH60FoMQGY5K0BwMKRZvtD-5FRVQkuTkpUzvwkGIRfFnuWEabVhI1Uoe8j_Dsjg7m0Hb1Du3jNbym2YjsT2HrUvLHfOeMgbCQI9jGouX8iJJid75CvU5Tj9LUsXrXmztxxte0tvKWHsAw9L7t1kZjKrxTn2"/>
 </div>
 <!-- Decorative Element -->
 <div class="absolute -z-10 top-20 right-10 w-64 h-64 border border-muted-gold/30 rounded-full"></div>
@@ -284,44 +689,41 @@
 </div>
 </section>
 <!-- Featured Collection -->
-<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-40 pt-10" id="latest-releases">
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-40">
 <div class="text-center mb-16">
 <h3 class="text-headline-md font-headline-md text-primary mb-4">أحدث الإصدارات</h3>
 <div class="w-12 h-px bg-muted-gold mx-auto"></div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-gutter">
 <!-- Product 1 -->
-<div class="flex flex-col items-center group cursor-pointer product-card" data-id="1" data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuBjSuc1oalvpwTjrsWvf8jpgMWfG3A64OwYohSgDRgJpSHsdUUPhEYsygoZ997dQvstt_tCbSJKGaqZKBwcdpkXMWMpjq9uIaPybzdTro5YrJD1JApZJ103lrj1BCxlpRnX7jozBG1Ax9NEPOwxVXHkT88MatlHeq-1Mjb8tkFUwDlHuBWXX2rvM_hggVq8jTnqrHFLzZ8VGYG7Uva5jKbFz1aieHATf4BSKALLpCz4zroo3HEr_jw9" data-name="عباءة الحرير الأسود" data-price="1250">
+<div class="flex flex-col items-center group cursor-pointer">
 <div class="oval-frame w-full max-w-[300px] mb-6 transition-transform duration-700 group-hover:scale-105">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjSuc1oalvpwTjrsWvf8jpgMWfG3A64OwYohSgDRgJpSHsdUUPhEYsygoZ997dQvstt_tCbSJKGaqZKBwcdpkXMWMpjq9uIaPybzdTro5YrJD1JApZJ103lrj1BCxlpRnX7jozBG1Ax9NEPOwxVXHkT88MatlHeq-1Mjb8tkFUwDlHuBWXX2rvM_hggVq8jTnqrHFLzZ8VGYG7Uva5jKbFz1aieHATf4BSKALLpCz4zroo3HEr_jw9"/>
+<img class="w-full h-full object-cover" data-alt="A full-length fashion shot of a minimalist, structured black abaya with subtle gold embroidery along the cuffs. The background is a stark, elegant warm ivory wall. The lighting is dramatic, casting soft shadows that emphasize the garment's clean lines and high-quality tailoring. The overall style is modern modest luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjSuc1oalvpwTjrsWvf8jpgMWfG3A64OwYohSgDRgJpSHsdUUPhEYsygoZ997dQvstt_tCbSJKGaqZKBwcdpkXMWMpjq9uIaPybzdTro5YrJD1JApZJ103lrj1BCxlpRnX7jozBG1Ax9NEPOwxVXHkT88MatlHeq-1Mjb8tkFUwDlHuBWXX2rvM_hggVq8jTnqrHFLzZ8VGYG7Uva5jKbFz1aieHATf4BSKALLpCz4zroo3HEr_jw9"/>
 </div>
 <h4 class="text-headline-md font-headline-md text-primary mb-2 text-center text-[24px]">عباءة الحرير الأسود</h4>
-<p class="text-body-md font-body-md text-on-surface-variant mb-4">١,٢٥٠ ريال</p>
-<button class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-primary text-primary px-6 py-2 rounded-full font-body-md text-sm hover:bg-primary hover:text-on-primary">أضف للسلة</button>
+<p class="text-body-md font-body-md text-on-surface-variant">١,٢٥٠ ريال</p>
 </div>
 <!-- Product 2 -->
-<div class="flex flex-col items-center group cursor-pointer mt-0 md:mt-16 product-card" data-id="2" data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuB7Qivh3Ay2boQ8h-MeqDvtxoi106lyIz_HwK-SrBTFhHBAf4jE472yaLz5Mr-d6LK0xeiQmd-kzSsIF1Yrtc5-f1kgpLo4lHy8cOOiYPNZu3hv0VGfaUHNQ2zIO-UNDGAykav99DJWmjPqvGmai_huw51iM7RIHxA7IKvungvkSbicuK5PZJGwYCIB98pIrsvtCSzE1BOsIt7QuUGgxHH7XzCGUsTqgyg_gecyhrMeE3092d978qeE" data-name="عباءة الكتان البيج" data-price="980">
+<div class="flex flex-col items-center group cursor-pointer mt-0 md:mt-16">
 <div class="oval-frame w-full max-w-[300px] mb-6 transition-transform duration-700 group-hover:scale-105">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7Qivh3Ay2boQ8h-MeqDvtxoi106lyIz_HwK-SrBTFhHBAf4jE472yaLz5Mr-d6LK0xeiQmd-kzSsIF1Yrtc5-f1kgpLo4lHy8cOOiYPNZu3hv0VGfaUHNQ2zIO-UNDGAykav99DJWmjPqvGmai_huw51iM7RIHxA7IKvungvkSbicuK5PZJGwYCIB98pIrsvtCSzE1BOsIt7QuUGgxHH7XzCGUsTqgyg_gecyhrMeE3092d978qeE"/>
+<img class="w-full h-full object-cover" data-alt="A close-up fashion image showcasing the intricate details of a beige abaya made from premium linen blend. The focus is on the delicate, flowing drape of the fabric and a subtle bordeaux accent near the collar. The lighting is soft and natural, evoking a serene, sophisticated mood consistent with a luxury beige canvas aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7Qivh3Ay2boQ8h-MeqDvtxoi106lyIz_HwK-SrBTFhHBAf4jE472yaLz5Mr-d6LK0xeiQmd-kzSsIF1Yrtc5-f1kgpLo4lHy8cOOiYPNZu3hv0VGfaUHNQ2zIO-UNDGAykav99DJWmjPqvGmai_huw51iM7RIHxA7IKvungvkSbicuK5PZJGwYCIB98pIrsvtCSzE1BOsIt7QuUGgxHH7XzCGUsTqgyg_gecyhrMeE3092d978qeE"/>
 </div>
 <h4 class="text-headline-md font-headline-md text-primary mb-2 text-center text-[24px]">عباءة الكتان البيج</h4>
-<p class="text-body-md font-body-md text-on-surface-variant mb-4">٩٨٠ ريال</p>
-<button class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-primary text-primary px-6 py-2 rounded-full font-body-md text-sm hover:bg-primary hover:text-on-primary">أضف للسلة</button>
+<p class="text-body-md font-body-md text-on-surface-variant">٩٨٠ ريال</p>
 </div>
 <!-- Product 3 -->
-<div class="flex flex-col items-center group cursor-pointer product-card" data-id="3" data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuCt8FOStesTPK6cuSFBJ8sy-rt2sQdlUpIbl-dkkCi3iJCJFEscQQh68ijg4p3igSfxHh9AYNBYl-Ab30HbMtQ9V2egulZOzLAsGWaYOp_s2tpoRuDWZWIaP6Pm1lgR6I1UG3mfKHfOgQ6DdfiicqQINDZeZEc457roEBcCi6cqCYixTDn5Gd7yJ0X9JDcRNH6dc3hkzvPs8tsK8Op91NIgBTpKDxCo_nLye7rJTDG0a7lPzCkZfHCS" data-name="عباءة مخمل بورغندي" data-price="1400">
+<div class="flex flex-col items-center group cursor-pointer">
 <div class="oval-frame w-full max-w-[300px] mb-6 transition-transform duration-700 group-hover:scale-105">
-<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt8FOStesTPK6cuSFBJ8sy-rt2sQdlUpIbl-dkkCi3iJCJFEscQQh68ijg4p3igSfxHh9AYNBYl-Ab30HbMtQ9V2egulZOzLAsGWaYOp_s2tpoRuDWZWIaP6Pm1lgR6I1UG3mfKHfOgQ6DdfiicqQINDZeZEc457roEBcCi6cqCYixTDn5Gd7yJ0X9JDcRNH6dc3hkzvPs8tsK8Op91NIgBTpKDxCo_nLye7rJTDG0a7lPzCkZfHCS"/>
+<img class="w-full h-full object-cover" data-alt="An editorial style photograph of a deep burgundy abaya blowing gently in a breeze. The setting is a minimalist architectural space with curved arches in warm ivory tones. The high-contrast image highlights the rich bordeaux color against the beige background, embodying modest luxury and elegant movement." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt8FOStesTPK6cuSFBJ8sy-rt2sQdlUpIbl-dkkCi3iJCJFEscQQh68ijg4p3igSfxHh9AYNBYl-Ab30HbMtQ9V2egulZOzLAsGWaYOp_s2tpoRuDWZWIaP6Pm1lgR6I1UG3mfKHfOgQ6DdfiicqQINDZeZEc457roEBcCi6cqCYixTDn5Gd7yJ0X9JDcRNH6dc3hkzvPs8tsK8Op91NIgBTpKDxCo_nLye7rJTDG0a7lPzCkZfHCS"/>
 </div>
 <h4 class="text-headline-md font-headline-md text-primary mb-2 text-center text-[24px]">عباءة مخمل بورغندي</h4>
-<p class="text-body-md font-body-md text-on-surface-variant mb-4">١,٤٠٠ ريال</p>
-<button class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-primary text-primary px-6 py-2 rounded-full font-body-md text-sm hover:bg-primary hover:text-on-primary">أضف للسلة</button>
+<p class="text-body-md font-body-md text-on-surface-variant">١,٤٠٠ ريال</p>
 </div>
 </div>
 </section>
 </main>
 <!-- Footer -->
-<footer class="bg-surface-dim dark:bg-inverse-surface border-t border-outline-variant/30 flat no shadows flex flex-col items-center gap-8 py-16 px-margin-desktop w-full" id="footer">
+<footer class="bg-surface-dim dark:bg-inverse-surface border-t border-outline-variant/30 flat no shadows flex flex-col items-center gap-8 py-16 px-margin-desktop w-full">
 <h2 class="text-headline-md font-headline-md text-primary">Rose Store</h2>
 <nav class="flex flex-wrap justify-center gap-6 md:gap-12 text-label-caps font-label-caps text-on-surface-variant">
 <a class="hover:text-primary underline-offset-4 hover:underline transition-opacity duration-200" href="#">Privacy Policy</a>
@@ -330,175 +732,235 @@
 </nav>
 <p class="text-body-md font-body-md text-on-surface-variant mt-4 text-center">© 2024 Rose Store. ALL RIGHTS RESERVED.</p>
 </footer>
-<script>
-    // Cart State
-    let cart = JSON.parse(localStorage.getItem('rose_store_cart')) || [];
+</body></html>
 
-    // DOM Elements
-    const cartDrawer = document.getElementById('cart-drawer');
-    const cartOverlay = document.getElementById('cart-overlay');
-    const closeCartBtn = document.getElementById('close-cart');
-    const cartToggles = document.querySelectorAll('.cart-toggle');
-    const cartItemsContainer = document.getElementById('cart-items');
-    const cartTotalEl = document.getElementById('cart-total');
-    const cartBadges = document.querySelectorAll('.cart-count-badge');
-    const toast = document.getElementById('toast');
-    const toastMsg = document.getElementById('toast-msg');
-    const checkoutWhatsappBtn = document.getElementById('checkout-whatsapp');
-    let toastTimeout;
+<!-- Rose Store Collection 2 -->
+<!DOCTYPE html>
 
-    // Functions
-    function saveCart() {
-        localStorage.setItem('rose_store_cart', JSON.stringify(cart));
-        updateCartUI();
-    }
-
-    function formatNumber(num) {
-        return num.toLocaleString('ar-SA');
-    }
-
-    function updateCartUI() {
-        // Update badges
-        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        cartBadges.forEach(badge => {
-            badge.textContent = totalItems;
-            if (totalItems > 0) {
-                badge.classList.remove('hidden');
-            } else {
-                badge.classList.add('hidden');
+<html dir="rtl" lang="ar" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>مجموعة العبايات الفاخرة - دار العباية</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#e0bfbf",
+                        "on-background": "#251819",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#ffdada",
+                        "secondary-fixed": "#e4e4cc",
+                        "on-secondary-fixed-variant": "#474836",
+                        "secondary-container": "#e1e1c9",
+                        "tertiary": "#002c36",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#800020",
+                        "secondary": "#5e604d",
+                        "background": "#fff8f7",
+                        "on-primary-fixed-variant": "#8e0f28",
+                        "on-surface-variant": "#584141",
+                        "inverse-surface": "#3b2d2d",
+                        "surface-bright": "#fff8f7",
+                        "tertiary-container": "#004451",
+                        "on-tertiary-fixed-variant": "#114d5b",
+                        "primary-fixed-dim": "#ffb3b5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#ff828a",
+                        "surface-tint": "#af2b3e",
+                        "on-tertiary-container": "#7cb0c0",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1b1d0e",
+                        "on-primary-fixed": "#40000b",
+                        "on-surface": "#251819",
+                        "surface-variant": "#f5dddd",
+                        "surface-dim": "#edd4d4",
+                        "secondary-fixed-dim": "#c8c8b0",
+                        "surface": "#fff8f7",
+                        "tertiary-fixed-dim": "#9acfde",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#fbe2e2",
+                        "soft-charcoal": "#2D2926",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#ffedec",
+                        "tertiary-fixed": "#b6ebfb",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#001f26",
+                        "surface-container-low": "#fff0f0",
+                        "inverse-primary": "#ffb3b5",
+                        "warm-ivory": "#FAF9F6",
+                        "outline": "#8c7071",
+                        "surface-container-highest": "#f5dddd",
+                        "muted-gold": "#C5A059",
+                        "surface-container": "#ffe9e8",
+                        "deep-burgundy": "#570013",
+                        "on-secondary-container": "#636451",
+                        "primary": "#570013"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "80px",
+                        "margin-mobile": "24px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "body-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["42px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.7", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.7", "fontWeight": "400" }]
+                    }
+                }
             }
-        });
-
-        // Update Drawer Items
-        cartItemsContainer.innerHTML = '';
-        if (cart.length === 0) {
-            cartItemsContainer.innerHTML = '<p class="text-center text-on-surface-variant font-body-md mt-10">السلة فارغة</p>';
-            cartTotalEl.textContent = '٠ ريال';
-            return;
         }
-
-        let total = 0;
-        cart.forEach((item, index) => {
-            const itemTotal = item.price * item.quantity;
-            total += itemTotal;
-            
-            const itemEl = document.createElement('div');
-            itemEl.className = 'flex gap-4 border-b border-outline-variant/30 pb-4';
-            itemEl.innerHTML = `
-                <img src="${item.image}" alt="${item.name}" class="w-20 h-24 object-cover rounded">
-                <div class="flex-1 flex flex-col justify-between">
-                    <div>
-                        <h4 class="font-headline-md text-primary">${item.name}</h4>
-                        <p class="text-body-md text-on-surface-variant text-sm">${formatNumber(item.price)} ريال</p>
-                    </div>
-                    <div class="flex justify-between items-center mt-2">
-                        <div class="flex items-center gap-3 border border-outline-variant rounded px-2 py-1">
-                            <button class="text-primary hover:text-on-surface-variant transition-colors" onclick="updateQty(${index}, -1)">
-                                <span class="material-symbols-outlined text-sm">remove</span>
-                            </button>
-                            <span class="font-body-md text-sm w-4 text-center">${item.quantity}</span>
-                            <button class="text-primary hover:text-on-surface-variant transition-colors" onclick="updateQty(${index}, 1)">
-                                <span class="material-symbols-outlined text-sm">add</span>
-                            </button>
-                        </div>
-                        <button class="text-error hover:opacity-70 transition-opacity text-sm font-body-md" onclick="removeItem(${index})">حذف</button>
-                    </div>
-                </div>
-            `;
-            cartItemsContainer.appendChild(itemEl);
-        });
-
-        cartTotalEl.textContent = `${formatNumber(total)} ريال`;
-    }
-
-    window.updateQty = (index, delta) => {
-        if (cart[index].quantity + delta > 0) {
-            cart[index].quantity += delta;
-        } else {
-            cart.splice(index, 1);
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        saveCart();
-    };
-
-    window.removeItem = (index) => {
-        cart.splice(index, 1);
-        saveCart();
-    };
-
-    function showToast(message) {
-        toastMsg.textContent = message;
-        toast.classList.remove('hidden', 'opacity-0');
-        toast.classList.add('toast-animate');
-        
-        clearTimeout(toastTimeout);
-        toastTimeout = setTimeout(() => {
-            toast.classList.add('opacity-0');
-            setTimeout(() => {
-                toast.classList.remove('toast-animate');
-                toast.classList.add('hidden');
-            }, 300);
-        }, 3000);
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+        .oval-container {
+            aspect-ratio: 1 / 1.5;
+            border-radius: 50% / 50%;
+            overflow: hidden;
+        }
+        .bg-gradient-radial {
+            background-image: radial-gradient(circle, var(--tw-gradient-stops));
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
     }
-
-    function toggleCart() {
-        cartDrawer.classList.toggle('open');
-        cartOverlay.classList.toggle('open');
-    }
-
-    // Event Listeners
-    cartToggles.forEach(btn => btn.addEventListener('click', toggleCart));
-    closeCartBtn.addEventListener('click', toggleCart);
-    cartOverlay.addEventListener('click', toggleCart);
-
-    if (checkoutWhatsappBtn) {
-        checkoutWhatsappBtn.addEventListener('click', () => {
-            if (cart.length === 0) {
-                showToast('السلة فارغة');
-                return;
-            }
-            
-            let message = "مرحبًا، أريد إتمام هذا الطلب:\nالمنتجات:\n";
-            let total = 0;
-            
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                message += `- ${item.name} × ${item.quantity} — ${itemTotal}\n`;
-            });
-            
-            message += `الإجمالي: ${total}\nأرغب في إتمام الطلب.`;
-            
-            const encodedMessage = encodeURIComponent(message);
-            window.open(`https://wa.me/966576396922?text=${encodedMessage}`, '_blank');
-        });
-    }
-
-    document.querySelectorAll('.product-card').forEach(card => {
-        card.addEventListener('click', (e) => {
-            // Add pulse effect to simulate button press
-            card.style.transform = 'scale(0.98)';
-            setTimeout(() => card.style.transform = '', 150);
-
-            const product = {
-                id: card.dataset.id,
-                name: card.dataset.name,
-                price: parseInt(card.dataset.price),
-                image: card.dataset.image
-            };
-            
-            const existing = cart.find(item => item.id === product.id);
-            if (existing) {
-                existing.quantity += 1;
-            } else {
-                cart.push({ ...product, quantity: 1 });
-            }
-            
-            saveCart();
-            showToast(`تم إضافة ${product.name} للسلة`);
-        });
-    });
-
-    // Initial render
-    updateCartUI();
-</script>
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased overflow-x-hidden selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar from JSON -->
+<header class="fixed top-0 w-full z-50 bg-background/80 dark:bg-background/80 backdrop-blur-sm bg-transparent">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 w-full max-w-container-max mx-auto">
+<!-- Leading Icon -->
+<button class="cursor-pointer active:opacity-70 text-primary dark:text-primary hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<!-- Headline -->
+<a class="text-headline-md font-headline-md tracking-widest text-primary dark:text-primary" href="{{DATA:SCREEN:SCREEN_6}}">Rose Store</a>
+<!-- Trailing Icon -->
+<button class="cursor-pointer active:opacity-70 text-primary dark:text-primary hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-[120px] pb-32 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Header Section -->
+<div class="text-center mb-24 max-w-2xl mx-auto">
+<h2 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-6">مجموعة الحرير الملكي</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant">اكتشفي الأناقة الخالدة مع تشكيلتنا الجديدة. تصميمات تجمع بين الأصالة والرقي، منسوجة بعناية فائقة لتعكس جمالك الداخلي في كل تفصيلة.</p>
+</div>
+<!-- Product Grid - Asymmetric Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-gutter gap-y-32 mb-40">
+<!-- Product 1 -->
+<article class="flex flex-col items-center group cursor-pointer lg:mt-16">
+<div class="w-full max-w-[320px] oval-container bg-warm-ivory relative mb-8 overflow-hidden">
+<img alt="عباية حرير بيج" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A luxurious beige silk abaya elegantly draped on a mannequin against a soft, light background. The lighting is diffused, highlighting the sheer, flowing quality of the fabric and intricate, subtle embroidery along the edges. The aesthetic is modest luxury, with warm ivory and bordeaux accents in the environment. High fashion lookbook style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVyPtnytwIoHqU4d4bTqYHmaTni14uOGakxm1tKP4nbePGmEJ87QQ9eFzFM-XcB7KQCK-oc2hlL1cwLh_GakjFqcKGTjFlOY3g4xxdw9mygEx3NtOOACdR8Yesluuqd68Q3sto_TEp0h0eDJ-EAMZdua0rXwij_ccCrKOkd2x-REKbTwJt2Nxre811BT2be6yy2sNZ1T4Bxx_PmEAONBuWGMH2ZxVscD39UehtE2X14psrVV-Ni36u"/>
+<div class="absolute inset-0 bg-black/0 group-hover:bg-primary/10 transition-colors duration-500"></div>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary mb-2 text-center">عباية مطرزه</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 text-center">حرير طبيعي مع تطريز يدوي دقيق</p>
+<div class="flex flex-col items-center gap-4">
+<span class="text-body-lg font-body-lg text-primary">١,٢٥٠ ريال</span>
+<button class="bg-primary text-on-primary text-label-caps font-label-caps px-10 py-3 rounded-full hover:bg-on-primary-fixed-variant transition-colors duration-300 w-full md:w-auto uppercase">إضافة للسلة</button>
+</div>
+</article>
+<!-- Product 2 -->
+<article class="flex flex-col items-center group cursor-pointer lg:mt-32">
+<div class="w-full max-w-[320px] oval-container bg-warm-ivory relative mb-8 overflow-hidden">
+<img alt="عباية مخملية بوردو" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A deep bordeaux colored abaya showcasing fluid drapery and rich texture. Photographed in an editorial style against a minimalist beige canvas. The fabric looks heavy yet elegant, with delicate pleats catching soft, warm light. The mood is sophisticated and regal, reflecting a high-end modest fashion brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-pnz1ym7RczWhjMzjmp2qc7S1LpGPWQn5sAStgMtezbKWX6CCX1eZxME2rq26YB7PLHcmnqKtlgIuDChZqR0qKjPs5SzLulcn0SpMYXrkBcYRQJu1PSyk1e5-rcCI_o0gmLPlLmVWeKeT_v-FSAGhw9qLW9yuHct1tO4TwnNXX9j8mdUJy2EUEiqBewCPFJTZwipyzyaBdw48VdoAzJ8K8qZoSibEwsb6KikoREYarFBt6gCcd352"/>
+<div class="absolute inset-0 bg-black/0 group-hover:bg-primary/10 transition-colors duration-500"></div>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary mb-2 text-center">عباية واسعه</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 text-center">كريب فاخر بلون العنابي العميق</p>
+<div class="flex flex-col items-center gap-4">
+<span class="text-body-lg font-body-lg text-primary">٩٨٠ ريال</span>
+<button class="border border-primary text-primary bg-transparent text-label-caps font-label-caps px-10 py-3 rounded-full hover:bg-primary/5 transition-colors duration-300 w-full md:w-auto uppercase">إضافة للسلة</button>
+</div>
+</article>
+<!-- Product 3 -->
+<article class="flex flex-col items-center group cursor-pointer lg:mt-0">
+<div class="w-full max-w-[320px] oval-container bg-warm-ivory relative mb-8 overflow-hidden">
+<img alt="عباية مطرزة بالذهبي" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="An exquisite olive green abaya with subtle golden thread details along the cuffs and neckline. The garment is displayed on a minimalist form in a sunlit gallery space with beige walls. Shadows fall softly, emphasizing the gentle curve of the fabric. The overall tone is refined, calm, and unmistakably luxurious, fitting a modest fashion aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg9cESBmp7m5p2JFS0EF-2tdgZCn7tzxecrckrYqJ3rOHUdL4JQRk6H7f0VKq8aYCmGfffiNSyobPr5PlLHOEJiXla7tTkGrHcFIAnVzsXzqs1d-LmtYPjgrZKTwU3sOBB7UiZkr8jL7CgyTd9l4_9X9Vt8ksJiN-MZO90xNpdvqmyyteCb-O1i_8hbfSM2rOv3jNNgYxEQY98gO857xyDH84Lj-NYtVdc7PhYk4Fe-m8HUymIPNJ9"/>
+<div class="absolute inset-0 bg-black/0 group-hover:bg-primary/10 transition-colors duration-500"></div>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary mb-2 text-center">عباية جود</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 text-center">تصميم كلاسيكي بلمسات ذهبية خفية</p>
+<div class="flex flex-col items-center gap-4">
+<span class="text-body-lg font-body-lg text-primary">١,١٠٠ ريال</span>
+<button class="bg-primary text-on-primary text-label-caps font-label-caps px-10 py-3 rounded-full hover:bg-on-primary-fixed-variant transition-colors duration-300 w-full md:w-auto uppercase">إضافة للسلة</button>
+</div>
+</article>
+<!-- Product 4 -->
+<article class="flex flex-col items-center group cursor-pointer lg:mt-16">
+<div class="w-full max-w-[320px] oval-container bg-warm-ivory relative mb-8 overflow-hidden">
+<img alt="عباية شيفون رمادي" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A soft, charcoal grey abaya draped over a minimalist stand. The fabric is a light, airy chiffon, perfect for layering. The setting is a bright, beige-toned studio with a focus on tactile luxury and minimalism. Delicate, sweeping curves of the fabric are highlighted by soft, directional lighting, creating a serene and editorial atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbsIBN1G06mukIoFbJqWeORFIfPFVhURzIgsPsKy85CA0LEfA1nd3tVppN20tI9efU6ccc_i7ctJ6cZV02E-7o-fVfkS4kuKkEXryzPGUeiShYv2z2Y5pUQtj9E2oj7Gupx1YkpBwVihNU1cP-hW-6UNWKeXsIZK9VGyGNsb1SAKaoEUnA8KU3Meh0db-w_z5Jo05TxPGlA3aPa55F_OuvNLCytZ5tjhxvOfqk7NnuGzmByEpTSkGL"/>
+<div class="absolute inset-0 bg-black/0 group-hover:bg-primary/10 transition-colors duration-500"></div>
+</div>
+<h3 class="text-headline-md font-headline-md text-primary mb-2 text-center">عباية طبقات</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 text-center">شيفون ناعم مع طبقات متعددة</p>
+<div class="flex flex-col items-center gap-4">
+<span class="text-body-lg font-body-lg text-primary">٨٥٠ ريال</span>
+<button class="border border-primary text-primary bg-transparent text-label-caps font-label-caps px-10 py-3 rounded-full hover:bg-primary/5 transition-colors duration-300 w-full md:w-auto uppercase">إضافة للسلة</button>
+</div>
+</article>
+<!-- Feature Block spanning 2 columns -->
+<div class="col-span-1 md:col-span-2 lg:mt-32 flex flex-col md:flex-row items-center bg-surface-dim rounded-[2rem] p-8 md:p-16 gap-12 relative overflow-hidden">
+<div class="absolute -top-32 -left-32 w-96 h-96 bg-primary-fixed/30 rounded-full blur-3xl opacity-50 mix-blend-multiply"></div>
+<div class="w-full md:w-1/2 oval-container aspect-[1/1] rounded-[4rem] overflow-hidden relative z-10">
+<img alt="تفاصيل العباية" class="w-full h-full object-cover" data-alt="A close-up shot of luxurious abaya fabric, highlighting intricate lacework and bead detailing. The color palette focuses on deep burgundy and muted gold against a warm ivory background. The texture is rich and palpable, conveying high craftsmanship and quiet sophistication. Shot with a shallow depth of field in a bright, modern studio setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-Jj35Mz9uXgVqiZ6FVQ--jcGrNNfkZBuZBziuuWnms860r7HSs1gNt9sNbmEqJs-OZmpH-9Xr15Snoyu-paqJfVFk_AblN3-lt7b8G8VOyAjKMmCg1z6NkAUgrnE577CH2YG0-D4qn4ozqjIcA9S7yMyt9tOvgAThjeeGS7s9eJ_0sFyZzss9JqG5EoWQIFDG6c8IFKRTbviIaQEwMXiuCvBl-raVsWoNLAxeOI2jMos8IQpI9HEp"/>
+</div>
+<div class="w-full md:w-1/2 text-right relative z-10">
+<h3 class="text-headline-md font-headline-md text-primary mb-4">تفاصيل تصنع الفارق</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-8 leading-relaxed">نولي اهتماماً خاصاً بأدق التفاصيل، من اختيار الأقمشة الفاخرة إلى التطريز اليدوي المتقن. كل عباية هي تحفة فنية مصممة لتبرز جمالك بأسلوب محافظ وراقي، مستلهمة من الأصالة العربية برؤية معاصرة.</p>
+<button class="bg-primary text-on-primary text-label-caps font-label-caps px-8 py-3 rounded-full hover:bg-on-primary-fixed-variant transition-colors duration-300 uppercase inline-flex items-center gap-2">
+<span class="">اكتشفي المزيد</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_left">arrow_left</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer from JSON -->
+<footer class="bg-surface-dim dark:bg-inverse-surface w-full border-t border-outline-variant/30 flex flex-col items-center gap-8 py-16 px-margin-mobile md:px-margin-desktop w-full transition-opacity duration-200">
+<!-- Links -->
+<nav class="flex flex-wrap justify-center gap-6 md:gap-12 w-full">
+<a class="text-on-surface-variant text-label-caps font-label-caps hover:text-primary underline-offset-4 hover:underline transition-colors duration-300" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant text-label-caps font-label-caps hover:text-primary underline-offset-4 hover:underline transition-colors duration-300" href="#">Shipping &amp; Returns</a>
+<a class="text-on-surface-variant text-label-caps font-label-caps hover:text-primary underline-offset-4 hover:underline transition-colors duration-300" href="#">Sustainability</a>
+</nav>
+<!-- Copyright -->
+<p class="text-body-md font-body-md text-on-surface-variant text-center max-w-md">© 2024 Rose Store. ALL RIGHTS RESERVED.</p>
+</footer>
 </body></html>
